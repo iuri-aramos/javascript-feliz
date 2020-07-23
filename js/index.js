@@ -1,17 +1,12 @@
 const root = document.querySelector("#root");
+const textTitle = 'Dificuldade';
 
-// const title = document.createElement("h1");
 
-// title.textContent = "Dificuldade";
+// Tagged template String
+const title = Title`
+  color:red;
+  ${textTitle}
+  font-size: 16px;
+`;
 
-function newElement(tag, conteudo) {
-  const title = `<${tag}>${conteudo}</${tag}>`;
-
-  root.insertAdjacentHTML("beforeend", title);
-}
-
-// root.appendChild(title);
-
-newElement("h1", "Dificuldade");
-
-newElement("h4", "Demoro");
+root.insertAdjacentHTML('beforeend', title);
