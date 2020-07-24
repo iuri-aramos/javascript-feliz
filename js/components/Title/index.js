@@ -1,4 +1,8 @@
-function Title(css, ... values) {
-
-    return `<h1 style="${css[0]}${css[1]}">${values[0]}</h1>`;
+function Title(css, textContent, smallContent, otherText) {
+    console.log(css);
+    return `<h1 style="${css[0]}${css[1]}">
+                ${textContent} 
+                <small>${smallContent}</small>
+                <em>${otherText}</em>
+            </h1>`;
 }
