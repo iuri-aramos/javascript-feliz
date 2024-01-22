@@ -1,17 +1,32 @@
-import db from "../database/connection.js";
+import { query } from "../database/db.js";
+import Response from "../models/response.js";
+import {getDataCertidao, getStatusCertidao} from "./get-certidao-data.js";
 
-async function main() {
-	try {
-		const connection = await db.getConnection();
-		console.log("Connected to MySQL database.");
+const VIEW_NAME = "VW_PROTOCOLO_STATUS_NEW";
 
-		const [results, fields] = await connection.execute(
-			"SELECT * FROM VW_PROTOCOLO_STATUS_NEW WHERE cod_senha = 'M2541000M'",
+export default async function getDocumentTypeData(codSenha) {
+	let response;
+
+	const documentTypeData = await query(
+		`SELECT tipo FROM ${VIEW_NAME} WHERE cod_senha = '${codSenha}'`,
+	);
+
+	response = new Response(documentTypeData[0].tipo);
+
+	if (documentTypeData[0].tipo.includes("CERTIDAO")) {
+		const certidaoData = await getDataCertidao(
+			documentTypeData[0].tipo,
+			codSenha,
 		);
+		response.setCertidao(certidaoData);
 
-		console.log(results);
-		console.log(fields);
-	} catch (error) {
-		console.error(error);
+		const status = await getStatusCertidao(certidaoData.codCertRi, certidaoData.datProtoRi);
+
+		response.setStatus(status);
+	} else {
+		// The documentTypeData.tipo does not contain the string "CERTIDAO"
+		console.log("Document type is not CERTIDAO");
 	}
+
+	return response;
 }
