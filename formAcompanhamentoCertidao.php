@@ -397,114 +397,144 @@ include "../Conectar/Conectar.php";
         if ($busca == "0") {
             "";
         } else {
-            echo "<table width='90%' border='0' cellspacing='0' cellpadding='0' align='center'>
-    <tr>
-      <td height='40' align='center' valign='middle' id='borda_arredondada' style='background-color:#151c46'>
-      <strong style='font-size: 20px;'>Acompanhamento de Título de " .
-                $TIPO_DOCUMENTO .
-                "</strong>
-      </td>
-    </tr>
-    <tr>
-      <td align='right' id='borda_c' style='background-color:#151c46'>
-      <strong style='font-size:10px'>última atualização realizada em " .
-                $DATA_ATUALIZACAO .
-                "&nbsp;</strong>
-      </td>
-    </tr>
-    <tr><td height='5' align='right' id='borda_c' style='background-color:#151c46'></td></tr>
-    <tr><td height='15' id='borda_c1'></td></tr>
-    <tr>
-     <td height='15' align='center' valign='middle' id='borda_c1'>
-     <center><strong style='font-size: 18px; color: #666;'>Dados do Protocolo</strong></center>
-     </td>
-    </tr>
-    <tr><td height='20px' id='borda_c1'></td></tr>
-    <tr>
-     <td id='borda_c1'>
-      <table width='90%' border='0' align='center' cellpadding='0' cellspacing='0'>
-       <tr><td><strong>Senha:</strong> " .
-                $COD_SENHA .
-                "</td></tr>
-       <tr><td><strong>Protocolo:</strong> " .
-                $NUM_PROTO_RI .
-                "</td></tr>
-	   <tr><td><strong>Data de Entrada:</strong> " .
-                $DAT_PROTO_RI .
-                "</td></tr>
-       " .
-                @$REAPR .
-                "
-       <tr><td><strong>Nome do Apresentante:</strong> " .
-                $NOM_APRESENT .
-                "</td></tr>
-       <tr><td><strong>Natureza do Título:</strong> " .
-                @$NOM_NATUREZA .
-                "</td></tr>
-       <tr><td><strong>Valor do Déposito:</strong> R$ " .
-                number_format(@$VAL_DEPOSITO, 2, ",", ".") .
-                "</td></tr>
-       
-      </table>
-     </td>
-    </tr>
-    <tr><td id='borda_c1'>&nbsp;</td></tr>
-    <tr><td id='borda_c1'>&nbsp;</td></tr>
-    <tr>
-     <td id='borda_c' align='center' style='background-color:#151c46'>
-      <strong style='font-size: 16px'>Andamento</strong>
-     </td>
-    </tr>
-    <tr><td id='borda_c1'>&nbsp;</td></tr>
-    <tr>
-     <td id='borda_c1'>
-      <center>
-       <table width='30%' border='0' cellpadding='0' cellspacing='0' style='line-height:1.5'>
+            echo "
+<table width='90%' border='0' cellspacing='0' cellpadding='0' align='center'>
+<tr>
+    <td height='40' align='center' valign='middle' id='borda_arredondada' style='background-color:#151c46'>
+    <strong style='font-size: 20px;'>Acompanhamento de Título de " . $TIPO_DOCUMENTO . "</strong>
+    </td>
+</tr>
+<tr>
+    <td align='right' id='borda_c' style='background-color:#151c46'>
+    <strong style='font-size:10px'>última atualização realizada em " . $DATA_ATUALIZACAO . "&nbsp;</strong>
+    </td>
+</tr>
+<tr>
+    <td height='5' align='right' id='borda_c' style='background-color:#151c46'></td>
+</tr>
+<tr>
+    <td height='15' id='borda_c1'></td>
+</tr>
+<tr>
+    <td height='15' align='center' valign='middle' id='borda_c1'>
+    <center>
+        <strong style='font-size: 18px; color: #666;'>Dados do Protocolo</strong>
+    </center>
+    </td>
+</tr>
+<tr>
+    <td height='20px' id='borda_c1'></td>
+</tr>
+<tr>
+    <td id='borda_c1'>
+    <table width='90%' border='0' align='center' cellpadding='0' cellspacing='0'>
         <tr>
-         <td width='7%' align='center'>
-          <img src='../Imagens/btnCheck.png' width='75' height='71' />
-         </td>
-         <td width='3%'>" .
-                @$SETA_MONT .
-                "</td>
-         <td width='7%' align='center'>" .
-                @$IMG_MONT .
-                "</td>
-           <td width='3%'>" .
-                $SETA_DISP .
-                "</td>
-           <td width='5%' align='center'>" .
-                $IMG_DISP .
-                "</td>
+        <td>
+            <strong>Senha:</strong> " . $COD_SENHA . "
+        </td>
         </tr>
-        <tr><td colspan='11' align='center' height='5px'></td></tr>
+        <tr>
+        <td>
+            <strong>Protocolo:</strong> " . $NUM_PROTO_RI . "
+        </td>
+        </tr>
+        <tr>
+        <td>
+            <strong>Data de Entrada:</strong> " . $DAT_PROTO_RI . "
+        </td>
+        </tr> " . @$REAPR . " <tr>
+        <td>
+            <strong>Nome do Apresentante:</strong> " . $NOM_APRESENT . "
+        </td>
+        </tr>
+        <tr>
+        <td>
+            <strong>Natureza do Título:</strong> " . @$NOM_NATUREZA . "
+        </td>
+        </tr>
+        <tr>
+        <td>
+            <strong>Valor do Déposito:</strong> R$ " . number_format(@$VAL_DEPOSITO, 2, ",", ".") . "
+        </td>
+        </tr>
+    </table>
+    </td>
+</tr>
+<tr>
+    <td id='borda_c1'>&nbsp;</td>
+</tr>
+<tr>
+    <td id='borda_c1'>&nbsp;</td>
+</tr>
+<tr>
+    <td id='borda_c' align='center' style='background-color:#151c46'>
+    <strong style='font-size: 16px'>Andamento</strong>
+    </td>
+</tr>
+<tr>
+    <td id='borda_c1'>&nbsp;</td>
+</tr>
+<tr>
+    <td id='borda_c1'>
+    <center>
+        <table width='30%' border='0' cellpadding='0' cellspacing='0' style='line-height:1.5'>
+        <tr>
+            <td width='7%' align='center'>
+            <img src='../Imagens/btnCheck.png' width='75' height='71' />
+            </td>
+
+            <td width='3%'>" . @$SETA_MONT . "</td>
+
+            <td width='7%' align='center'>" . @$IMG_MONT . "</td>
+
+            <td width='3%'>" . $SETA_DISP . "</td>
+
+            <td width='5%' align='center'>" . $IMG_DISP . "</td>
+            
+        </tr>
+        <tr>
+            <td colspan='11' align='center' height='5px'></td>
+        </tr>
         <tr style='font-size:12px'>
-         <td align='center'>Entrada</td><td>&nbsp;</td>
-         <td align='center'>Busca em Processo</td><td>&nbsp;</td>
-         <td align='center'>Disponivel</td><td>&nbsp;</td>
+            <td align='center'>Entrada</td>
+            <td>&nbsp;</td>
+            <td align='center'>Busca em Processo</td>
+            <td>&nbsp;</td>
+            <td align='center'>Disponivel</td>
+            <td>&nbsp;</td>
         </tr>
         <tr style='font-size:10px'>
-         <td align='center'>" .
-                $DAT_PROTO_RI .
-                "</td><td>&nbsp;</td>
-         <td align='center'>" .
-                $DATA_REMESSA_MONT .
-                "</td><td>&nbsp;</td>
-         <td align='center'>" .
-                $DATA_REMESSA_DISP .
-                "</td><td>&nbsp;</td>
+            <td align='center'>" . $DAT_PROTO_RI . "</td>
+            <td>&nbsp;</td>
+            <td align='center'>" . $DATA_REMESSA_MONT . "</td>
+            <td>&nbsp;</td>
+            <td align='center'>" . $DATA_REMESSA_DISP . "</td>
+            <td>&nbsp;</td>
         </tr>
-       </table>
-      </center>
-     </td>
+        </table>
+    </center>
+    </td>
+</tr>
+<tr>
+    <td id='borda_c1' height='40px;'></td>
+</tr>
+<tr>
+    <td id='borda_c1' height='40px;'>"; ?> <center>
+        <a href="#" onClick="window.open('formAcomCertImpressao.php?Tipo_Cert=
+                    <?php echo $Tipo_Tit; ?>&Protocolo=
+                    <?php echo $Protocolo; ?>&Titulo=
+                    <?php echo $TIPO_DOCUMENTO; ?>', '', 'STATUS=NO, TOOLBAR=NO, LOCATION=NO, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=90, LEFT=150, WIDTH=702, HEIGHT=468'); " style="text-decoration:none">
+        <img src='../Imagens/btnImprimir.png' width='21' height='18' />&nbsp;Imprimir </a>
+    </center> <?php echo "
+        </td>
     </tr>
-   <tr><td id='borda_c1'  height='40px;'></td></tr>
-	<tr><td id='borda_c1'  height='40px;'>"; ?><center><a href="#" onClick="window.open('formAcomCertImpressao.php?Tipo_Cert=<?php echo $Tipo_Tit; ?>&Protocolo=<?php echo $Protocolo; ?>&Titulo=<?php echo $TIPO_DOCUMENTO; ?>', '', 'STATUS=NO, TOOLBAR=NO, LOCATION=NO, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=90, LEFT=150, WIDTH=702, HEIGHT=468'); " style="text-decoration:none"><img src='../Imagens/btnImprimir.png' width='21' height='18' />&nbsp;Imprimir</a></center><?php echo "</td></tr>
-	<tr><td id='borda_c1' style='border-bottom:1px solid #999;'>&nbsp;</td></tr>
-  </table>";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ?>
+    <tr>
+        <td id='borda_c1' style='border-bottom:1px solid #999;'>&nbsp;</td>
+    </tr>
+</table>";
+        }
+    }
+    ?>
 
 </div>
 <br /><br />

@@ -1,6 +1,6 @@
 import { query } from "../database/db.js";
 import Response from "../models/response.js";
-import {getDataCertidao, getStatusCertidao} from "./get-certidao-data.js";
+import { getDataCertidao, getStatusCertidao } from "./get-certidao-data.js";
 
 const VIEW_NAME = "VW_PROTOCOLO_STATUS_NEW";
 
@@ -20,7 +20,10 @@ export default async function getDocumentTypeData(codSenha) {
 		);
 		response.setCertidao(certidaoData);
 
-		const status = await getStatusCertidao(certidaoData.codCertRi, certidaoData.datProtoRi);
+		const status = await getStatusCertidao(
+			certidaoData.codCertRi,
+			certidaoData.datProtoRi,
+		);
 
 		response.setStatus(status);
 	} else {

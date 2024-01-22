@@ -1,7 +1,7 @@
 import Certidao from "../models/certidao.js";
 import { query } from "../database/db.js";
 import { formatterCurrency } from "../utils/formatter-currency.js";
-import StatusCertidao from "../models/status-certidao.js";
+import { formatDateBR } from "../utils/formatter-date.js";
 
 async function getDataCertidao(certidaoTipo, codSenha) {
 	const certidaoData = new Certidao();
@@ -13,7 +13,7 @@ async function getDataCertidao(certidaoTipo, codSenha) {
 			const result = await query(queryCertidao);
 
 			certidaoData.setCodSenha(result[0].num_senha);
-            certidaoData.setCodCertRi(result[0].cod_cert_ri);
+			certidaoData.setCodCertRi(result[0].cod_cert_ri);
 			certidaoData.setNumProtoRi(result[0].num_proto);
 			certidaoData.setDatProtoRi(result[0].dat_proto);
 			certidaoData.setDataUltimaAtualizacao(result[0].data_atualizacao);
@@ -41,15 +41,31 @@ async function getDataCertidao(certidaoTipo, codSenha) {
 }
 
 async function getStatusCertidao(codCertRi, datProtoRi) {
-    const statusCertidao = new StatusCertidao();
+	const status = [
+		{ data: datProtoRi, status: "Entrada" },
+		{ data: "Aguardando", status: "Busca em Processo" },
+		{ data: "Aguardando", status: "Disponivel" },
+	];
 
-    statusCertidao.setData(datProtoRi, "Entrada");
+	const queryStatus = `SELECT * FROM remes_cert WHERE cod_cert_ri1 = '${codCertRi}'`;
 
-    const queryStatus = `SELECT * FROM remes_cert WHERE cod_cert_ri1 = '${codCertRi}'`;
+	const resultStatus = await query(queryStatus);
 
-    const resultStatus = await query(queryStatus);
+	const dataMontagem = resultStatus.filter(
+		(obj) => obj.cod_setor_d === "51" || obj.cod_setor_d === "57",
+	);
 
-    return statusCertidao;
+	if (dataMontagem.length > 0)
+		status[1].data = formatDateBR(dataMontagem[0].dat_remessa);
+
+	const dataMontagemDisponivel = resultStatus.filter(
+		(obj) => obj.cod_setor_d === "49",
+	);
+
+	if (dataMontagemDisponivel.length > 0)
+		status[2].data = formatDateBR(dataMontagemDisponivel[0].dat_remessa);
+
+	return status;
 }
 
 export { getDataCertidao, getStatusCertidao };
