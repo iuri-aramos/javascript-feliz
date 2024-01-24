@@ -12,6 +12,7 @@ async function getDataCertidao(certidaoTipo, codSenha) {
 
 			const result = await query(queryCertidao);
 
+			certidaoData.setTitulo("Registro de Imóveis");
 			certidaoData.setCodSenha(result[0].num_senha);
 			certidaoData.setCodCertRi(result[0].cod_cert_ri);
 			certidaoData.setNumProtoRi(result[0].num_proto);

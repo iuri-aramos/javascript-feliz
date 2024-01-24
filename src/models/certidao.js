@@ -1,5 +1,6 @@
 export default class Certidao {
 	constructor(
+		titulo,
 		codSenha,
 		codCertRi,
 		nomeApresentante,
@@ -9,6 +10,7 @@ export default class Certidao {
 		dataUltimaAtualizacao,
 		valorDeposito,
 	) {
+		this.titulo = titulo;
 		this.codSenha = codSenha;
 		this.codCertRi = codCertRi;
 		this.nomeApresentante = nomeApresentante;
@@ -17,6 +19,10 @@ export default class Certidao {
 		this.datProtoRi = datProtoRi;
 		this.dataUltimaAtualizacao = dataUltimaAtualizacao;
 		this.valorDeposito = valorDeposito;
+	}
+
+	setTitulo(titulo) {
+		this.titulo = titulo;
 	}
 
 	setCodSenha(codSenha) {

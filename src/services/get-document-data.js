@@ -11,6 +11,13 @@ export default async function getDocumentTypeData(codSenha) {
 		`SELECT tipo FROM ${VIEW_NAME} WHERE cod_senha = '${codSenha}'`,
 	);
 
+	if (documentTypeData.length === 0) {
+		throw new Error("No data found");
+	}
+
+	if (documentTypeData.length > 1) {
+		throw new Error("More than one row found");
+	}
 	response = new Response(documentTypeData[0].tipo);
 
 	if (documentTypeData[0].tipo.includes("CERTIDAO")) {
